@@ -1,0 +1,4 @@
+var CTE={};CTE.callback=null;CTE.container=document.getElementById("content-container");CTE.container.style.opacity=0;CTE.canvas=document.getElementsByTagName("canvas")[0];CTE.canvas.classList.add("unclicked");CTE.text=document.createElement("div");CTE.text.className="overlaytext";CTE.text.id="CTEText";CTE.text.innerText="click to enter";document.body.insertBefore(CTE.text,document.body.children[0]);CTE.clicked=()=>{if(CTE.canvas.className.includes("click")&&!CTE.canvas.className.includes("unclicked"))
+return;CTE.canvas.classList.remove("unclicked");CTE.canvas.classList.add("click");CTE.text.classList.add("fadeOut");setTimeout(()=>{CTE.canvas.classList.add("clicked");CTE.text.remove();CTE.container.classList.add("fadeIn");setTimeout(()=>{CTE.container.style.opacity=1;if(CTE.callback&&typeof(CTE.callback)=="function")
+CTE.callback();},1000);},1000);}
+CTE.canvas.onclick=CTE.clicked;
